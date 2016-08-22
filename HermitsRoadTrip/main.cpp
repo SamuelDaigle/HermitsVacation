@@ -5,11 +5,11 @@ std::map<std::string, std::shared_ptr<sf::Texture>> SpriteLoader::textures = {};
 
 int main()
 {
-	sf::Vector2<int> windowedSize(800, 600);
+	sf::Vector2<int> windowedSize(1024, 576);
 	float ratio = windowedSize.x / windowedSize.y;
 	std::string windowTitle = "Hermit's vacation";
 
-	sf::RenderWindow window(sf::VideoMode(windowedSize.x, windowedSize.y), windowTitle);
+	sf::RenderWindow window(sf::VideoMode(windowedSize.x, windowedSize.y), windowTitle, sf::Style::Close);
 	window.setFramerateLimit(60);
 	sf::View view = window.getDefaultView();
 	window.setView(view);
@@ -28,19 +28,13 @@ int main()
 				fullscreen = !fullscreen;
 				if (fullscreen)
 				{
-					window.setSize(sf::Vector2u(sf::VideoMode::getDesktopMode().width, sf::VideoMode::getDesktopMode().height));
-					
-					view.setViewport(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y));
+					window.create(sf::VideoMode(windowedSize.x, windowedSize.y), windowTitle, sf::Style::Fullscreen);
+					window.setView(view);
 				}
 				else
 				{
-					window.setSize(sf::Vector2u(windowedSize.x, windowedSize.y));
-					view.setViewport(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y));
+					window.create(sf::VideoMode(windowedSize.x, windowedSize.y), windowTitle, sf::Style::Close);
 				}
-				
-			}
-			if (event.type == sf::Event::Resized) {
-				view.setViewport(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y));
 			}
 		}
 
