@@ -9,8 +9,8 @@ RV::RV()
 	wheelLeft = SpriteLoader::GetSprite("rv_wheel");
 	wheelRight = SpriteLoader::GetSprite("rv_wheel");
 
-	base->setPosition(sf::Vector2<float>(100, 100));
-	base->setScale(sf::Vector2<float>(10, 10));
+	base->setPosition(sf::Vector2<float>(0, 0));
+	base->setScale(sf::Vector2<float>(20, 20));
 }
 
 
